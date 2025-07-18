@@ -29,7 +29,7 @@ export const createConversation = async (
     custom_greeting: settings.greeting !== undefined && settings.greeting !== null 
       ? settings.greeting 
       : "Hey there! I'm your personal assistant! Let's get started with getting you to be more productive and fulfilled.",
-    participant_ids: settings.name ? [settings.name] : ["effie-goenawan"],
+    participant_ids: settings.name ? [settings.name] : ["anonymous"],
     conversational_context: contextString
   };
   

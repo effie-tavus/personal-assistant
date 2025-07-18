@@ -1,1 +1,1 @@
-export const TIME_LIMIT = 60 * 60; // 1 hour in seconds
+export const TIME_LIMIT = 30 * 60; // 1 hour in seconds
