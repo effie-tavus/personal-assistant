@@ -1,29 +1,6 @@
 import { memo } from "react";
-import { Button } from "./ui/button";
-import { Settings, Check, LogOut } from "lucide-react";
-import { useAtom } from "jotai";
-import { screenAtom } from "@/store/screens";
-import { conversationAtom } from "@/store/conversation";
-import { settingsSavedAtom } from "@/store/settings";
-import { clearApiTokenAtom } from "@/store/tokens";
 
 export const Header = memo(() => {
-  const [, setScreenState] = useAtom(screenAtom);
-  const [conversation] = useAtom(conversationAtom);
-  const [settingsSaved] = useAtom(settingsSavedAtom);
-  const [, clearToken] = useAtom(clearApiTokenAtom);
-
-  const handleSettings = () => {
-    if (!conversation) {
-      setScreenState({ currentScreen: "settings" });
-    }
-  };
-
-  const handleLogout = () => {
-    clearToken();
-    setScreenState({ currentScreen: "intro" });
-  };
-
   return (
     <header className="flex w-full flex-col items-center justify-start gap-2" style={{ fontFamily: 'Inter, sans-serif' }}>
       <img
