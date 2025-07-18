@@ -87,32 +87,6 @@ export const FinalScreen: React.FC = () => {
     }
   };
 
-  const testGoogleSheetsConnection = async () => {
-    const sheetsUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
-    if (!sheetsUrl) {
-      alert('Google Sheets URL not configured. Please set VITE_GOOGLE_SHEETS_URL in your .env file.');
-      return;
-    }
-    
-    // Test using a simple redirect to avoid CORS
-    window.open(sheetsUrl, '_blank');
-    alert('Opening Google Apps Script in new tab. If you see a JSON response, the connection is working!');
-  };
-
-  const downloadCSV = () => {
-    const savedSettings = localStorage.getItem('tavus-settings');
-    const username = savedSettings ? JSON.parse(savedSettings).name : 'anonymous';
-    
-    const csvContent = `Timestamp,Username,Rating,Feedback\n${new Date().toISOString()},${username},${rating},${text.replace(/"/g, '""')}`;
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `feedback-${new Date().toISOString().split('T')[0]}.csv`;
-    a.click();
-    window.URL.revokeObjectURL(url);
-  };
-
   return (
     <DialogWrapper>
       <AnimatedTextBlockWrapper>
