@@ -39,23 +39,7 @@ Spin up this template in under a minute with StackBlitz:
    ```bash
    npm install
    npm run dev
-   ```
-
-3. **Login to the demo:**
-   - Username: `effie` (or customize in .env)
-   - Password: `personal-assistant-1985` (or customize in .env)
-
-3. **Customize your persona:**
-   - Update the `persona_id` in `createConversation.ts` with your own
-   - Learn how to [create your own persona](https://docs.tavus.io/sections/conversational-video-interface/creating-a-persona) on the [Tavus Platform](https://platform.tavus.io/)
-
-   ```typescript
-   body: JSON.stringify({
-     persona_id: "your_persona_id_here",
-   }),
-   ```
-
-> 💡 **Demo Mode**: This template includes a demo login system. For production use, replace the hardcoded credentials with a proper authentication system and real Tavus API credentials.
+   ``` 
 
 ## 🔐 Environment Variables
 
@@ -64,8 +48,6 @@ The following environment variables are used in this project:
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `VITE_TAVUS_API_KEY` | Your Tavus API key | `your_tavus_api_key_here` |
-| `VITE_DEMO_USERNAME` | Demo login username | `effie` |
-| `VITE_DEMO_PASSWORD` | Demo login password | `personal-assistant-1985` |
 
 ### Getting Your Tavus API Key
 
