@@ -25,35 +25,17 @@ export const Header = memo(() => {
   };
 
   return (
-    <header className="flex w-full items-start justify-between" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <header className="flex w-full flex-col items-center justify-start gap-2" style={{ fontFamily: 'Inter, sans-serif' }}>
       <img
         src="/images/logo.svg"
         alt="Tavus"
-        className="relative h-6 sm:h-10"
+        className="relative h-6 sm:h-10 mb-2"
       />
-      <div className="relative flex gap-2">
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handleLogout}
-          className="relative size-10 sm:size-14 border-0 bg-transparent hover:bg-zinc-800"
-          title="Logout"
-        >
-          <LogOut className="size-4 sm:size-6" />
-        </Button>
-        {settingsSaved && (
-          <div className="absolute -top-2 -right-2 z-20 rounded-full bg-green-500 p-1 animate-fade-in">
-            <Check className="size-3" />
-          </div>
-        )}
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handleSettings}
-          className="relative size-10 sm:size-14 border-0 bg-transparent hover:bg-zinc-800"
-        >
-          <Settings className="size-4 sm:size-6" />
-        </Button>
+      <div className="w-full max-w-2xl text-center text-white text-2xl font-bold mb-1" style={{ fontFamily: 'Source Code Pro, monospace' }}>
+        Hey I'm Hudson, your AI friend.
+      </div>
+      <div className="w-full max-w-2xl text-center text-white text-base font-normal opacity-90 px-2">
+        I keep track of our conversations and what matters to you.
       </div>
     </header>
   );

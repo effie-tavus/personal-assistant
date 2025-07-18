@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=VT323&family=Press+Start+2P&display=swap');
+
+:root {
+  /* Set the retro font stack globally */
+  --retro-font: 'IBM Plex Mono', 'VT323', 'Press Start 2P', monospace;
+}
+
+html, body, #root {
+  font-family: var(--retro-font) !important;
+}
+
+/* Optionally override Tailwind or other utility classes if needed */
+* {
+  font-family: var(--retro-font) !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 0%;
