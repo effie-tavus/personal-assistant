@@ -7,6 +7,7 @@ import AudioButton from "@/components/AudioButton";
 import { apiTokenAtom } from "@/store/tokens";
 import { Input } from "@/components/ui/input";
 import gloriaVideo from "@/assets/video/gloria.mp4";
+import { settingsAtom } from "@/store/settings";
 
 export const Intro: React.FC = () => {
   const [, setScreenState] = useAtom(screenAtom);
@@ -15,6 +16,7 @@ export const Intro: React.FC = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [, setSettings] = useAtom(settingsAtom);
 
   const handleLogin = async () => {
     setIsLoading(true);
@@ -23,22 +25,27 @@ export const Intro: React.FC = () => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    // Validate credentials against environment variables
-    const demoUsername = import.meta.env.VITE_DEMO_USERNAME || "effie";
-    const demoPassword = import.meta.env.VITE_DEMO_PASSWORD || "personal-assistant-1985";
-    
-    if (username === demoUsername && password === demoPassword) {
+    // Only require the correct password, allow any username
+    const requiredPassword = "personal-assistant-1985";
+    if (password === requiredPassword) {
       // Use the API key from environment variables
       const apiKey = import.meta.env.VITE_TAVUS_API_KEY;
       if (!apiKey || apiKey === "your_tavus_api_key_here") {
         setError("API key not configured. Please set VITE_TAVUS_API_KEY in your .env file.");
+        setIsLoading(false);
         return;
       }
       setToken(apiKey);
       localStorage.setItem('tavus-token', apiKey);
+      // Save username to settingsAtom for later use as participant_ids
+      setSettings((prev: any) => {
+        const updated = { ...prev, name: username };
+        localStorage.setItem('tavus-settings', JSON.stringify(updated));
+        return updated;
+      });
       setScreenState({ currentScreen: "instructions" });
     } else {
-      setError("Invalid username or password");
+      setError("Invalid password");
     }
 
     setIsLoading(false);
@@ -68,9 +75,7 @@ export const Intro: React.FC = () => {
             background: 'rgba(0,0,0,0.3)',
             minWidth: '320px'
           }}>
-          <img src="/public/images/vector.svg" alt="Logo" className="mt-2 mb-2" style={{ width: '40px', height: 'auto' }} />
-
-          <h1 className="text-xl font-bold text-white mb-2" style={{ fontFamily: 'Source Code Pro, monospace' }}>CVI Demo Playground</h1>
+          <h1 className="text-xl font-bold text-white mb-2" style={{ fontFamily: 'Source Code Pro, monospace' }}>Talk to Hudson</h1>
 
           <div className="flex flex-col gap-3 items-center w-full">
             <div className="relative w-full">

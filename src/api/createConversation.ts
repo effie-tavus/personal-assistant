@@ -5,8 +5,12 @@ import { getDefaultStore } from "jotai";
 export const createConversation = async (
   token: string,
 ): Promise<IConversation> => {
-  // Get settings from Jotai store
-  const settings = getDefaultStore().get(settingsAtom);
+  // Get settings from localStorage to ensure latest username
+  let settings = getDefaultStore().get(settingsAtom);
+  const savedSettings = localStorage.getItem('tavus-settings');
+  if (savedSettings) {
+    settings = { ...settings, ...JSON.parse(savedSettings) };
+  }
   
   // Add debug logs
   console.log('Creating conversation with settings:', settings);
@@ -25,7 +29,7 @@ export const createConversation = async (
     custom_greeting: settings.greeting !== undefined && settings.greeting !== null 
       ? settings.greeting 
       : "Hey there! I'm your personal assistant! Let's get started with getting you to be more productive and fulfilled.",
-    participant_ids: ["effie-goenawan"],
+    participant_ids: settings.name ? [settings.name] : ["effie-goenawan"],
     conversational_context: contextString
   };
   
