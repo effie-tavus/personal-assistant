@@ -1,8 +1,8 @@
-# Tavus Vibecode Quickstart
+# Tavus Personal Assistant Quickstart
 
 ## 🚀 Introduction
 
-The fastest way to get started vibecoding with Tavus CVI. This React quickstart template provides everything you need to create interactive video experiences powered by Tavus's Conversational Video Interface technology.
+Lets build a personal assistant with Tavus CVI. This React quickstart template provides everything you need to create interactive video experiences powered by Tavus's Conversational Video Interface technology.
 
 > ⚠️ **Important Note**: This is a development template only. For production use, you must:
 > - Never expose your Tavus API keys in the frontend
