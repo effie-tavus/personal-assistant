@@ -156,6 +156,16 @@ export const Conversation: React.FC = () => {
   return (
     <DialogWrapper>
       <div className="absolute inset-0 size-full">
+        {/* Debug: Show Conversation ID button at top left */}
+        {conversation?.conversation_id && (
+          <button
+            onClick={() => window.alert(`Conversation ID: ${conversation.conversation_id}`)}
+            className="absolute top-4 right-4 z-50 px-3 py-2 bg-black/80 text-white border border-white/30 rounded-lg text-xs hover:bg-white/10 transition-all"
+            style={{ fontFamily: 'inherit', letterSpacing: '0.03em' }}
+          >
+            Show Conversation ID
+          </button>
+        )}
         {remoteParticipantIds?.length > 0 ? (
           <>
             <Timer />
