@@ -2,10 +2,12 @@ import { DialogWrapper, AnimatedTextBlockWrapper } from "@/components/DialogWrap
 import React, { useState } from "react";
 import { useAtom } from "jotai";
 import { screenAtom } from "@/store/screens";
+import { conversationAtom } from "@/store/conversation";
 import { Button } from "@/components/ui/button";
 
 export const FinalScreen: React.FC = () => {
   const [, setScreenState] = useAtom(screenAtom);
+  const [conversation] = useAtom(conversationAtom);
 
   const handleReturn = () => {
     setScreenState({ currentScreen: "intro" });
@@ -22,10 +24,14 @@ export const FinalScreen: React.FC = () => {
       const savedSettings = localStorage.getItem('tavus-settings');
       const username = savedSettings ? JSON.parse(savedSettings).name : 'anonymous';
       
+      // Get conversation ID from localStorage (stored before conversation was cleared)
+      const conversationId = localStorage.getItem('current-conversation-id') || 'unknown';
+      
       const feedbackData = {
         username,
         rating,
-        text: text || ''
+        text: text || '',
+        conversation_id: conversationId
       };
       
       console.log('Submitting feedback:', feedbackData);
@@ -49,7 +55,8 @@ export const FinalScreen: React.FC = () => {
       const fields = {
         username: feedbackData.username,
         rating: feedbackData.rating,
-        text: feedbackData.text
+        text: feedbackData.text,
+        conversation_id: feedbackData.conversation_id
       };
       
       Object.entries(fields).forEach(([key, value]) => {

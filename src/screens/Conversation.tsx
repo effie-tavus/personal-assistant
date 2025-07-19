@@ -142,6 +142,10 @@ export const Conversation: React.FC = () => {
     if (conversation?.conversation_id && token) {
       endConversation(token, conversation.conversation_id);
     }
+    // Store conversation ID in localStorage before clearing
+    if (conversation?.conversation_id) {
+      localStorage.setItem('current-conversation-id', conversation.conversation_id);
+    }
     setConversation(null);
     clearSessionTime();
 

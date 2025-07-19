@@ -16,7 +16,8 @@ function doPost(e) {
         data = {
           username: e.parameter.username || 'anonymous',
           rating: e.parameter.rating || 'none',
-          text: e.parameter.text || ''
+          text: e.parameter.text || '',
+          conversation_id: e.parameter.conversation_id || 'unknown'
         };
       }
     } else {
@@ -24,7 +25,8 @@ function doPost(e) {
       data = {
         username: e.parameter.username || 'anonymous',
         rating: e.parameter.rating || 'none',
-        text: e.parameter.text || ''
+        text: e.parameter.text || '',
+        conversation_id: e.parameter.conversation_id || 'unknown'
       };
     }
     
@@ -34,7 +36,8 @@ function doPost(e) {
       new Date(), // Timestamp
       data.username || 'anonymous',
       data.rating || 'none',
-      data.text || ''
+      data.text || '',
+      data.conversation_id || 'unknown'
     ];
     
     sheet.appendRow(row);
