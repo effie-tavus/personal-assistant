@@ -2,12 +2,10 @@ import { DialogWrapper, AnimatedTextBlockWrapper } from "@/components/DialogWrap
 import React, { useState } from "react";
 import { useAtom } from "jotai";
 import { screenAtom } from "@/store/screens";
-import { conversationAtom } from "@/store/conversation";
 import { Button } from "@/components/ui/button";
 
 export const FinalScreen: React.FC = () => {
   const [, setScreenState] = useAtom(screenAtom);
-  const [conversation] = useAtom(conversationAtom);
 
   const handleReturn = () => {
     setScreenState({ currentScreen: "intro" });
