@@ -17,11 +17,25 @@ export const createConversation = async (
   console.log('Greeting value:', settings.greeting);
   console.log('Context value:', settings.context);
   
-  // Build the context string
+  // Get current date and time in Pacific Standard Time
+  const now = new Date();
+  const pstTime = now.toLocaleString('en-US', {
+    timeZone: 'America/Los_Angeles',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true
+  });
+  
+  // Build the context string with current date/time
   let contextString = "";
   if (settings.name) {
-    contextString = `You are talking with the user, ${settings.name}. Additional context: `;
+    contextString = `You are talking with the user, ${settings.name}. `;
   }
+  contextString += `Current date and time: ${pstTime}. `;
   contextString += settings.context || "";
   
   const payload = {
