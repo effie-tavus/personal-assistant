@@ -40,11 +40,13 @@ export const createConversation = async (
   
   const payload = {
     persona_id: settings.persona || "p72bafe6bb9a",
-    custom_greeting: settings.greeting !== undefined && settings.greeting !== null 
-      ? settings.greeting 
-      : "Hey there! I'm your personal assistant! Let's get started with getting you to be more productive and fulfilled.",
-    participant_ids: settings.name ? [settings.name] : ["anonymous"],
-    conversational_context: contextString
+    custom_greeting:
+      settings.greeting !== undefined && settings.greeting !== null
+        ? settings.greeting
+        : "Hey there! I'm your personal assistant! Let's get started with getting you to be more productive and fulfilled.",
+    participant_tags: settings.name ? [settings.name] : ["anonymous"],
+    conversational_context: contextString,
+    document_ids: ["d0-857249780de7", "de-7fdcb56126b8"],
   };
   
   console.log('Sending payload to API:', payload);
