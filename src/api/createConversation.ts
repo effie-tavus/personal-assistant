@@ -44,7 +44,7 @@ export const createConversation = async (
       settings.greeting !== undefined && settings.greeting !== null
         ? settings.greeting
         : "Hey there! I'm Hudson! Let's get started with getting you to be more productive and fulfilled.",
-    memory_stores: settings.name ? [settings.name] : ["anonymous"],
+    participant_tags: settings.name ? [settings.name] : ["anonymous"],
     conversational_context: contextString,
     document_ids: ["d0-857249780de7", "de-7fdcb56126b8"],
   };
